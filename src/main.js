@@ -5,8 +5,12 @@ const directive = {
   name: 'append-html',
   mounted: (el, binding) => {
       if (el && binding) {
-          const domString = `<span><br>Appended to HTML: ${binding.value}</span>`
-          el.innerHTML += domString
+          const domString = `<br>Appended to HTML: ${binding.value}`
+
+          const span = document.createElement('span');
+          span.innerHTML = domString.trim();
+
+          el.append(span)
       }
   }
 }
